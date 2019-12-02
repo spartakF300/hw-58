@@ -1,0 +1,13 @@
+.alert{
+    position: relative;
+    border: 1px solid black;
+    width: 500px;
+    height: 60px;
+    margin: 10px;
+    padding: 15px;
+}
+.btnAlert{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}

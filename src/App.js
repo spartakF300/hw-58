@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Modal from "./components/Ui/Modal/Modal";
+import Alert from "./components/Ui/Alert/Alert";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+    state = {
+        modalShow: false,
+    };
+    closed = () => {
+        this.setState({modalShow: false})
+    };
+    open = () => {
+        this.setState({modalShow: true})
+    };
+    dismiss = () => {
+        alert('closed');
+    };
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.open}>Open</button>
+                <Modal
+                    show={this.state.modalShow}
+                    closed={this.closed}
+                    title="Some kinda modal title"
+                >
+
+                    <p>This is modal content</p>
+
+                </Modal>
+                <Alert
+                    type="Yellow"
+                    dismissed
+                    dismiss={this.dismiss}
+
+                >This is a yellow type alert
+                </Alert>
+                <Alert dismiss={this.dismiss} type="green">This is a green type alert</Alert>
+
+
+            </div>
+        );
+    }
 }
 
 export default App;
